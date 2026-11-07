@@ -2,102 +2,104 @@
 
 # Haclash
 
-**Game platformer hack-and-slash 2D** yang dibangun dengan Godot 4.7 dan GDScript.
+A **2D hack-and-slash platformer** built with Godot 4.7 and GDScript.
 
 [![Status](https://img.shields.io/badge/status-%F0%9F%9A%A7%20prototype-orange?style=flat-square)](#)
 [![Godot](https://img.shields.io/badge/Godot-4.7-478CBF?style=flat-square&logo=godot-engine&logoColor=white)](https://godotengine.org)
 [![GDScript](https://img.shields.io/badge/GDScript-4-478CBF?style=flat-square&logo=godot-engine&logoColor=white)](https://docs.godotengine.org)
 
+**English** · [Bahasa Indonesia](README.id.md)
+
 </div>
 
 ---
 
-> ## 🚧 Project ini masih prototype
+> ## 🚧 This project is still a prototype
 >
-> Fondasi gameplay (gerak, platform, animasi serangan & roll) sudah ada, tetapi **belum ada musuh, sistem damage, level design, atau UI**. Angka masih placeholder dan belum di-tuning. Lihat [Roadmap](#-roadmap).
+> The gameplay foundation is in place (movement, platforms, attack and roll animations), but there are **no enemies, no damage system, no level design, and no UI**. All numbers are placeholders and untuned. See the [Roadmap](#-roadmap).
 
 ---
 
-## Tentang
+## About
 
-Haclash adalah eksperimen game 2D bergenre *hack-and-slash* — pemain bergerak di arena platform dan menyerang musuh dengan combo. Project ini dipakai untuk mempelajari **Godot 4**, terutama node `CharacterBody2D`, state machine animasi, dan resourse-based scene composition.
+Haclash is a 2D *hack-and-slash* experiment: the player moves through a platform arena and attacks enemies with combos. It exists as a way to learn **Godot 4**, particularly `CharacterBody2D`, animation state machines, and scene composition from reusable scenes.
 
-## Fitur yang Sudah Ada
+## What Already Exists
 
-- **Player controller** (`scripts/player.gd`) — pergerakan horizontal, lompat, dan deteksi arah hadap.
-- **Animasi serangan & roll** — logika animasi combo dan *dodge roll* (masih tahap placeholder).
-- **Scene terpisah** — `player.tscn`, `platform.tscn`, dan `game.tscn` untuk komposisi level.
-- **Konfigurasi Godot 4.7** — renderer Forward+.
+- **Player controller** (`scripts/player.gd`) — horizontal movement, jumping, and facing-direction detection.
+- **Attack and roll animations** — combo animation logic and a dodge roll (still placeholder).
+- **Separate scenes** — `player.tscn`, `platform.tscn`, and `game.tscn` for level composition.
+- **Godot 4.7 project** — Forward+ renderer.
 
 ## Tech Stack
 
-| Bagian | Teknologi |
+| Layer | Technology |
 | --- | --- |
 | Engine | Godot 4.7 |
-| Bahasa | GDScript |
+| Language | GDScript |
 | Renderer | Forward+ |
-| Aset | SVG (ikon & sprite vektor) |
+| Assets | SVG (vector icons and sprites) |
 
-## Menjalankan
+## Running It
 
 ### 1. Install Godot 4.7
 
-Unduh dari [godotengine.org](https://godotengine.org/download).
+Download from [godotengine.org](https://godotengine.org/download).
 
-### 2. Clone repo
+### 2. Clone
 
 ```bash
 git clone https://github.com/Ilhamaji/haclash.git
 cd haclash
 ```
 
-### 3. Buka di Godot
+### 3. Open in Godot
 
-Klik **Import** → pilih `project.godot` → **Import & Edit**, lalu tekan **F5** untuk run.
+Click **Import** → select `project.godot` → **Import & Edit**, then press **F5** to run.
 
-## Struktur
+## Project Layout
 
 ```
-project.godot          # konfigurasi project (Godot 4.7, Forward+)
-icon.svg               # ikon project
+project.godot          # project config (Godot 4.7, Forward+)
+icon.svg               # project icon
 scenes/
-  game.tscn            # scene level utama
-  player.tscn          # scene player
-  platform.tscn        # prefab platform
+  game.tscn            # main level scene
+  player.tscn          # player scene
+  platform.tscn        # platform prefab
 scripts/
-  player.gd            # controller & state machine player
-assets/                # sprite dan aset visual
+  player.gd            # player controller and state machine
+assets/                # sprites and visual assets
 ```
 
 ## 🗺️ Roadmap
 
-### Prioritas Tinggi
-- [ ] **Musuh** — base class musuh + 1–2 tipe (melee & ranged) dengan AI patroli/serang.
-- [ ] **Sistem damage & health** — hitbox/hurtbox, HP bar, invincibility frames, dan knockback.
-- [ ] **State machine player** — pisahkan `Idle / Run / Jump / Fall / Attack / Hurt / Dead` secara eksplisit.
-- [ ] **Kamera** — `Camera2D` dengan smoothing dan batas level.
+### High priority
+- [ ] **Enemies** — a base enemy class plus 1–2 types (melee and ranged) with patrol/attack AI.
+- [ ] **Damage and health** — hitbox/hurtbox, HP bars, invincibility frames, and knockback.
+- [ ] **Explicit player state machine** — separate `Idle / Run / Jump / Fall / Attack / Hurt / Dead`.
+- [ ] **Camera** — `Camera2D` with smoothing and level bounds.
 
-### Prioritas Menengah
-- [ ] **Level design** — 1 level utuh dengan progres awal → tengah → boss.
-- [ ] **Tilemap** — ganti platform placeholder dengan `TileMapLayer`.
-- [ ] **Checkpoint & respawn** — titik simpan di tengah level.
-- [ ] **UI/HUD** — HP bar, skor, menu pause, dan game over.
-- [ ] **SFX & musik** — efek serangan, lompat, dan musik latar.
+### Medium priority
+- [ ] **Level design** — one complete level with a start → mid → boss progression.
+- [ ] **Tilemap** — replace placeholder platforms with `TileMapLayer`.
+- [ ] **Checkpoints and respawn** — a save point mid-level.
+- [ ] **UI/HUD** — HP bar, score, pause menu, and game over.
+- [ ] **SFX and music** — attack, jump, and background music.
 
-### Prioritas Rendah
-- [ ] **Combo system** — rantai serangan dengan window timing.
-- [ ] **Upgrade/skill** — ability tambahan antar-level.
-- [ ] **Save system** — simpan progres dan high score.
-- [ ] **Build & distribusi** — ekspor ke Windows/Linux/Web (HTML5).
+### Low priority
+- [ ] **Combo system** — chained attacks with timing windows.
+- [ ] **Upgrades and skills** — extra abilities between levels.
+- [ ] **Save system** — persist progress and high scores.
+- [ ] **Build and distribution** — export to Windows/Linux/Web (HTML5).
 
-### Diketahui Kurang / Bug
-- [ ] Fitur **roll masih placeholder** (belum ada invincibility frame).
-- [ ] Belum ada scene musuh sama sekali — gameplay belum bisa dimainkan penuh.
-- [ ] Belum ada aset audio.
-- [ ] Parameter gerak (kecepatan, gravitasi, jump force) belum di-tuning.
+### Known gaps and bugs
+- [ ] **Roll is still a placeholder** (no invincibility frames yet).
+- [ ] There are no enemy scenes at all — the game cannot be played through.
+- [ ] No audio assets.
+- [ ] Movement parameters (speed, gravity, jump force) are untuned.
 
 ---
 
 <div align="center">
-Dibuat oleh <a href="https://github.com/Ilhamaji">Ilham Aji</a>
+Built by <a href="https://github.com/Ilhamaji">Ilham Aji</a>
 </div>
